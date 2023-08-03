@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <!-- swiper -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.2.6/swiper-bundle.min.css"
+        integrity="sha512-iDPwu4/flStAQwiwb+w4cNFOxNkc61+a8/f0ut0sb8krDqKCLvuE8wj8MFUGlT71OBSDtpYwbU4BPg0f+qO9vg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <article class="profile">
+      <h1 class="title">profile</h1>
+
+      <section class="profile-container">
+        <div class="profile-img">
+          <div class="img-box">
+            <img src="img/no-img.png" alt="my image">
+          </div>
+          <button type="button" id="editBtn" class="edit-btn" title="edit profile" onclick="editCont();">
+            <span class="icon-pencil"><img src="img/pencil.svg" alt="edit"></span>
+          </button>
+          <div class="img-select">
+            <div class="img-sel-btn" onclick="selectFile()"></div>
+            <input type="file" id="inpFile" class="hidden" accept="image/*">
+          </div>
+        </div>
+
+        <div class="profile-cont">
+          <dl>
+            <dt>
+              <label>Name</label>
+            </dt>
+            <dd>
+              <input class="profile-inp" type="text" value="Tomwood" placeholder="Name" readonly onfocus="this.blur()">
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <label>Email</label>
+            </dt>
+            <dd>
+              <input class="profile-inp" type="text" value="Tomwood@gmail.com" placeholder="email@gmail.com" readonly onfocus="this.blur()">
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <label>Phone</label>
+            </dt>
+            <dd>
+              <input class="profile-inp" type="text" value="+1 (604) 899-4480" placeholder="1234567890" readonly onfocus="this.blur()">
+            </dd>
+          </dl>
+          <dl>
+            <dt>
+              <label>Address</label>
+            </dt>
+            <dd>
+              <input class="profile-inp" type="text" value="889 W Pender St. ," placeholder="" readonly onfocus="this.blur()"> 
+              <input class="profile-inp" type="text" value="Suite 200 Vancouver ," placeholder="" readonly onfocus="this.blur()">
+              <input class="profile-inp" type="text" value="BC V6C 3B2" placeholder="" readonly onfocus="this.blur()">
+            </dd>
+          </dl>
+        </div>
+
+        <div class="btn-wrap" id="confirmBtn">
+          <button type="button" class="btn-cancel" onclick="editCancel()">Cancel</button>
+          <button type="button" class="btn-save" onclick="editSave()">Save</button>
+        </div>
+      </section>
+
+      <section class="wish-container">
+        <div class="wish-list">
+
+          <div class="swiper">
+            <ul class="movieBox swiper-wrapper">
+              <li class="movieCard swiper-slide">
+                <a href="./detail.html/detail_Falcon.html"><img src="./img/Google/Falcon_Lake.png"
+                        alt=""></a>
+                <div class="movieDes">
+                    <div class="movieFlex">
+                        <p>Falcon Lake<span class="movieStar"></span></p>
+                    </div>
+                    <p class="movieSum">Bastien and Chloé spend summer vacation with their families ...</p>
+                </div>
+            </li>
+          </ul>
+            <!-- slider side arrows -->
+            <!-- <div class="swiper-button-prev"></div> -->
+            <!-- <div class="swiper-button-next"></div> -->
+        </div>
+
+        </div>
+      </section>
+    </article>
+
+    <!-- js -->
+    <script src="./scripts/main.js" defer></script>
+    <!-- swiper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.2.6/swiper-bundle.min.js"
+        integrity="sha512-CGsqPVUZUUVx5RS41AFdu5Ghj3cKcpHxg7ae66br18nqK5dTPJ2k6srKYVHMMIvaq96QIoOE8JrqXrlWuppfEA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+
+    <script>
+      const editBtn = document.getElementById('editBtn')
+      const inps = document.querySelectorAll('.profile-inp')
+      const imgSel = document.querySelector('.img-select')
+      const confirmBtn = document.getElementById('confirmBtn')
+      let inpArr = []
+
+      function editCont(){
+        editBtn.style.display = 'none'
+        imgSel.style.display = 'block'
+        confirmBtn.style.display = 'block'
+        
+        inpArr = []
+
+        for(let i = 0; i < inps.length; i++) {
+          inps[i].onfocus = ''
+          inps[i].readOnly = false
+          inpArr.push(inps[i].value)
+        }
+      }
+
+      function exitEdit() {
+        editBtn.style.display = 'block'
+        imgSel.style.display = 'none'
+        confirmBtn.style.display = 'none'
+
+        for(let i in inps) {
+          inps[i].onfocus = "this.blur()"
+          inps[i].readOnly = true;
+        }
+      }
+
+      function editCancel(){
+        exitEdit()
+        for(let i = 0; i < inps.length; i++) {
+          inps[i].value = inpArr[i]
+        }
+      }
+
+      function editSave(){
+        exitEdit()
+      }
+
+      function selectFile() {
+        document.getElementById('inpFile').click()
+      }
+    </script>
+  </body>
+</html>

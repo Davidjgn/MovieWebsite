@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign Up</title>
+
+    <style>
+        
+        .h1 {
+          color: black;
+          font-size: 40px;
+          font-weight: bold;
+        }
+        .Hiperlink{
+          color:blue;
+          text-decoration: underline;
+        }
+        span{
+            color:black;
+        }
+        .TextBoxDescription{
+            color:black;
+        }
+        .body{
+          text-align: center;
+          width: 40%;
+          height: 300px;
+          padding-top: 30px;
+          margin:50px auto;
+          background-color: #DCDBDB;
+          border-radius: 15px;
+        }
+        .innerTxt{
+            text-align: right;
+            margin: 10px auto;
+            padding-right: 30%;
+        }
+
+    </style>
+    <script>
+
+        function myfunction() {
+           // localStorage.clear();
+            var signupUsername= document.getElementById("signupUsername").value;
+            var signupPassword = document.getElementById("signupPassword").value;
+            var confirm= document.getElementById("confirm").value;
+            var reg = new RegExp(/^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{8,15}$/);
+            var error = document.getElementById("error");
+            var error1= document.getElementById("error1");
+            var error2= document.getElementById("error2");
+            var condition1;
+            var condition2;
+            var condition3;
+            var timeoutexec = false;
+            var valueusername = document.getElementById('signupUsername').value;
+
+            var valuepassword = document.getElementById('signupPassword').value;
+
+            if((reg.test(signupPassword))==false){
+                error.textContent="Please make sure the password is 8-15 characters long, and include at least one uppercase, one lowercase letter, one number, and one special character.";
+                error.style.color="red";
+                condition1=false;
+            }
+            else{
+                error.textContent="";
+                condition1=true;
+            }
+            if (confirm != signupPassword) {
+                error1.textContent = "Please make sure the passwords match.";
+                error1.style.color = "red";
+                condition2=false;
+            }
+            else {
+                error1.textContent = "";
+                condition2=true;
+            }
+            if(signupUsername==''){
+                error2.textContent="Please enter an email."
+                error2.style.color="red";
+                condition3=false;
+            }
+            else{
+                error2.textContent="";
+                condition3=true;
+            }
+            if(condition1==true&&condition2==true&&condition3==true){
+                error.textContent="Thank you for signing up! ;)";
+                error.style.color="black";
+               setTimeout(function(){
+               
+                timeoutexec = true;
+                localStorage.clear();
+                localStorage.setItem('UserName', valueusername);
+               localStorage.setItem('PassWord', valuepassword);
+               console.log(localStorage);
+               window.location.href = "./login.html";
+               },3000);
+            
+            }
+         
+             
+        }
+    </script>
+</head>
+
+<body>
+    <div class="body">
+        <form id="form1">
+            <label ><h1 class="h1">Sign Up</h1></label>
+            <br>
+            <div class="innerTxt">
+                <label class="TextBoxDescription">Email: </label>
+                <input type="text" id="signupUsername">
+                <br>
+                <span id="error2"></span>
+                <br>
+                <label class="TextBoxDescription">Password: </label>
+                <input type="text" id="signupPassword">
+                
+                <br>
+                <label class="TextBoxDescription">Confirm Password: </label>
+                <input type="text" id="confirm">
+                <br>
+                <span id="error1"></span>
+                <br>
+                
+                
+            </div>
+            <span id="error"></span>
+            <br>
+            <input type="button" value="Submit" onclick="myfunction()">
+            
+
+        </form>
+    </div>
+</body>
+
+</html>
+
+    </div>
+</body>
+
+</html>

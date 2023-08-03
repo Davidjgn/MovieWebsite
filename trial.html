@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- swiper -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.2.6/swiper-bundle.min.css"
+        integrity="sha512-iDPwu4/flStAQwiwb+w4cNFOxNkc61+a8/f0ut0sb8krDqKCLvuE8wj8MFUGlT71OBSDtpYwbU4BPg0f+qO9vg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .movieBtn {
+            margin-right: 8px;
+            padding: 8px;
+            background-color: #DCDBDB;
+            border-radius: 8px;
+        }
+
+        .movieBtn.is-active {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.2.6/swiper-bundle.min.js"
+        integrity="sha512-CGsqPVUZUUVx5RS41AFdu5Ghj3cKcpHxg7ae66br18nqK5dTPJ2k6srKYVHMMIvaq96QIoOE8JrqXrlWuppfEA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+    <script>
+        function wishlist() {
+            const movieBtn = document.querySelectorAll('.movieBtn');
+
+            for (let i = 0; i < movieBtn.length; i++) {
+                // console.log(typeof(this.movieBtn));
+
+                console.log("length", movieBtn.length);
+                console.log("classlist", movieBtn[i].classList);
+
+                movieBtn[i].addEventListener('click', function () {
+                    console.log(this.classList.target);
+                })
+            }
+        }
+
+        const swiper = new Swiper(".swiper", {
+            slidesPerView: 4,
+            slidesPerGroup: 1,
+            spaceBetween: 48,
+            autoHeight: true,
+            speed: 350,
+            // navigation: {
+            //     nextEl: '.swiper-button-next',
+            //     prevEl: '.swiper-button-prev',
+            // },
+            loop: true,
+            mousewheel: true,
+            keyboard: true,
+            autoplay: {
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            breakpoints: {
+                480: {
+                    // slidesPerView: ,
+                },
+                960: {
+                    // slidesPerView: ,
+                }
+            }
+        });
+    </script>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-list">
+                    <button class="movieBtn" id="movieBtn" onclick="wishlist()">Wishlist</button>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>LogIn</title>
+
+  <style>
+    .h1 {
+      color: black;
+      font-size: 40px;
+      font-weight: bold;
+    }
+    .Hiperlink{
+      color:blue;
+      text-decoration: underline;
+    }
+    .AdvicetosignIntext{
+      color:black;
+    }
+    .TextBoxDescription{
+      color:black;
+    }
+    .body{
+      text-align: center;
+      background-color: #DCDBDB;
+      padding-top: 30px;
+    }
+  </style>
+    
+  <script>
+    let signupUsername;
+    let signupPassword;
+    var signedUp=false;
+  
+    function LogInFuntion(){
+      //signupUsername = "plk";
+      //signupPassword = "qwe";
+      //#Un commment in case you want to test with an especific user and password.
+
+      signupUsername = localStorage.UserName; 
+      signupPassword = localStorage.PassWord; 
+      //Pull the values: signupUsername and signupPassword from local estorage.
+
+      var loginUsername = document.getElementById("loginusername").value;
+      var loginPassword = document.getElementById("loginpassword").value;
+        if (loginUsername ==signupUsername){ 
+          if(loginPassword != signupPassword){
+            alert("Password doesn't match");
+          }
+          if(loginPassword == signupPassword){
+            window.location.href="./index_login.html";
+            
+            signedUp = true;
+            localStorage.setItem('Logged', signedUp);
+            window.location.href = './index_login.html';
+            localStorage.setItem('LoggedUser', loginUsername);
+            window.location.href = './index_login.html';
+            //Save the values: signedUp and loginUsername to local storage to access then from the index page.
+          }
+        }
+        else{
+          alert("Please, verify user name");
+        }
+    }
+
+  </script>
+
+</head>
+
+  <body class="body">
+    <form action="./index_login.html" method="get">
+      <h1 class="h1">LogIn </style></h1><br>
+
+      <div>
+        <div class="TextBoxDescription"><label id="UserName" >User Name or email: </label></div>
+        <input type="text" id="loginusername" name="UserName"><br><br>
+
+        <div class="TextBoxDescription"><label id="Password" >Password: </label></div>
+        <input type="text" id="loginpassword" name="Password"><br><br>
+
+        <input type="button" id="logInbutton" name="logInbutton" value="LogIn" onclick="LogInFuntion()"><br><br>
+
+        <div class="Hiperlink">
+          <a  href="https://htmlpreview.github.io/?https://github.com/BSMainardi/MovieWebsite/blob/main/signup.html">Reset My Password</a></div><br>
+
+        <div class="AdvicetosignIntext">
+        <p>Need a Account, SignUp using the link below:</p></div>
+
+        <div class="Hiperlink">
+        <a  href="https://htmlpreview.github.io/?https://github.com/BSMainardi/MovieWebsite/blob/main/signup.html">SignUp</a></div>
+      </div>
+
+    </form>
+  </body>
+</html>
