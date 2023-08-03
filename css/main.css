@@ -1,0 +1,169 @@
+@charset "UTF-8";
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    opacity: .8;
+}
+
+li {
+    list-style-type: none;
+}
+
+.container {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.wrapper {
+    max-width: 1240px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+/* header */
+.headerItems {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-right: 4%;
+    margin-left: 4%;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #DCDBDB;
+}
+
+.headerBox {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 32px;
+    width: 50%;
+}
+
+.headerLogin,
+.headerSignup {
+    width: calc(100%/4 - 32px);
+}
+
+.headerLink {
+    display: inline-block;
+    width: 100%;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: #DCDBDB;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* movie */
+.movie {
+    margin-top: 48px;
+}
+
+.movie:nth-of-type(2) {
+    padding-bottom: 64px;
+}
+
+.movieBox {
+    margin-top: 16px;
+    padding: 8px;
+}
+
+.movieCard {
+    border: 1px solid #333;
+}
+
+.movieCard:hover {
+    animation: scale .2s linear forwards;
+}
+
+@keyframes scale {
+    to {
+        transform: scale(1.02);
+    }
+}
+
+.movieFlex {
+    /* for movieRate and movieBtn */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.movieStar {
+    position: relative;
+    margin-left: 8px;
+}
+
+.movieStar::before,
+.movieStar::after {
+    content: '★★★★★';
+    color: orange;
+}
+
+.movieStar::before {
+    color: #ccc;
+}
+
+/* star 4.5 */
+.movieStar::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 4.5em;
+}
+
+/* star 4.0 */
+.movieCard:nth-of-type(4n) .movieStar::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 4em;
+}
+
+.movieDes {
+    padding: 8px;
+}
+
+.movieBtn {
+    margin-right: 8px;
+    padding: 8px;
+    background-color: #DCDBDB;
+    border-radius: 8px;
+}
+
+.movieBtn:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+.movieBtn.is-active {
+    background-color: green;
+}
+
+.movieSum {
+    margin-top: 8px;
+}
+
+/* swiper */
+.swiper-button-next,
+.swiper-button-prev {
+    --swiper-navigation-color: #fff;
+    opacity: 0.8;
+}
